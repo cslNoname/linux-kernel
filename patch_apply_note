@@ -1,0 +1,129 @@
+4.1 : [done]
+Fault around: apply this patch [introduced in 3.15]
+-> mm/memory.c update
+--------------
+4.4 : [done]
+from 4.1 : 
+        arch/x86/vdso/
+        kernel/x509_certificate_list
+Fault around: apply this patch [introduced in 3.15]
+--------------
+4.9 : [done]
+Fault around: apply this patch [introduced in 3.15]
+SLAB freelist randomization: unset the CONFIG_SLAB_FREELIST_RANDOM build configuration option[introduced since 4.7]
+Disabling transparent huge pages: set the CONFIG_TRANSPARENT_HUGEPAGE_ALWAYS build configuration option to y [3.13~4.6, 4.8~4.11]
+**Hardened usercopy: unset the CONFIG_HARDENED_USERCOPY build configuration option[introduced since 4.8]
+Userspace page fault handling: unset the CONFIG_USERFAULTFD build configuration option
+-------------
+4.14 : [done]
+from 4.9
+        arch/x86/vdso/
+        firmware/cis/
+        kernel/x509_certificate_list
+        scripts/kconfig/zconf.hash.c
+Fault around: apply this patch [introduced in 3.15]
+Avoid indirect branch speculation (Spectre patch): unset the CONFIG_RETPOLINE build configuration option[introduced in 4.14]
+SLAB freelist randomization: unset the CONFIG_SLAB_FREELIST_RANDOM build configuration option[introduced since 4.7]
+Hardened usercopy: unset the CONFIG_HARDENED_USERCOPY build configuration option[introduced since 4.8]
+Userspace page fault handling: unset the CONFIG_USERFAULTFD build configuration option
+-------------
+4.19 : [done]
+from 4.14
+        arch/x86/vdso/
+        crypto/asymmetric_keys/mscode-asn1.c
+        crypto/asymmetric_keys/mscode-asn1.h
+        crypto/asymmetric_keys/pkcs7-asn1.c
+        crypto/asymmetric_keys/pkcs7-asn1.h
+        crypto/asymmetric_keys/x509-asn1.c
+        crypto/asymmetric_keys/x509-asn1.h
+        crypto/asymmetric_keys/x509_akid-asn1.c
+        crypto/asymmetric_keys/x509_akid-asn1.h
+        crypto/asymmetric_keys/x509_rsakey-asn1.c
+        crypto/asymmetric_keys/x509_rsakey-asn1.h
+        crypto/rsaprivkey-asn1.c
+        crypto/rsaprivkey-asn1.h
+        crypto/rsapubkey-asn1.c
+        crypto/rsapubkey-asn1.h
+        drivers/crypto/qat/qat_common/qat_rsaprivkey-asn1.c
+        drivers/crypto/qat/qat_common/qat_rsaprivkey-asn1.h
+        drivers/crypto/qat/qat_common/qat_rsapubkey-asn1.c
+        drivers/crypto/qat/qat_common/qat_rsapubkey-asn1.h
+        firmware/cis/
+        kernel/x509_certificate_list
+        scripts/genksyms/keywords.hash.c
+        scripts/kconfig/zconf.hash.c
+
+Fault around: apply this patch [introduced in 3.15]
+Kernel page-table isolation (Meltdown patch): unset the CONFIG_PAGE_TABLE_ISOLATION build configuration option[after 4.14]
+Avoid indirect branch speculation (Spectre patch): unset the CONFIG_RETPOLINE build configuration option[introduced in 4.14]
+SLAB freelist randomization: unset the CONFIG_SLAB_FREELIST_RANDOM build configuration option[introduced since 4.7]
+Hardened usercopy: unset the CONFIG_HARDENED_USERCOPY build configuration option[introduced since 4.8]
+Userspace page fault handling: unset the CONFIG_USERFAULTFD build configuration option
+-------------
+
+
+
+
+Kernel page-table isolation (Meltdown patch): unset the CONFIG_PAGE_TABLE_ISOLATION build configuration option[after 4.14]
+causing feature : KPTI
+4.19
+
+
+Avoid indirect branch speculation (Spectre patch): unset the CONFIG_RETPOLINE build configuration option[introduced in 4.14]
+causgin feature : Retpoline patch
+4.14 4.19
+
+
+SLAB freelist randomization: unset the CONFIG_SLAB_FREELIST_RANDOM build configuration option[introduced since 4.7]
+causgin feature : SLAB freelist randomization
+4.9 4.14 4.19
+
+
+Hardened usercopy: unset the CONFIG_HARDENED_USERCOPY build configuration option[introduced since 4.8]
+causing feature : Hardened usercopy
+4.9 4.14 4.19
+
+
+Fault around: apply this patch [introduced in 3.15]
+causing feature : Fault around 
+4.1 4.4 4.9 4.14 4.19
+
+
+Control group memory controller: unset the CONFIG_MEMCG build configuration option[introduced in version 2.6]
+causing feature : cgroup memory controller
+[Interestingly, the kernel developers only began to optimize cgroup’s overhead since version 3.17, 6.5 years after cgroups was first introduced]
+ㄴ3.17 이후에 슬로우다운은 최적화 관심 가짐 81, 41퍼 슬로다운이 9퍼 5퍼로 감소
+(4.1 4.4 4.9 4.14 4.19) - no need to do?
+
+
+Disabling transparent huge pages: set the CONFIG_TRANSPARENT_HUGEPAGE_ALWAYS build configuration option to y [3.13~4.6, 4.8~4.11]
+causing feature : Transparent Huge Pages
+4.9
+
+
+Userspace page fault handling: unset the CONFIG_USERFAULTFD build configuration option
+causing feature : userspace page fault handling
+4.9 4.14 4.19
+
+no need to be applied-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Forced context tracking: unset the CONFIG_CONTEXT_TRACKING_FORCE build configuration option [3.10 3.12-3.15]
+causing feature  : mistake FCT feature 
+
+
+TLB layout specification: apply this patch - [Introduced in kernel version 3.14]
+However, this patch was only released six months
+after the earliest version of the Haswell family of processors
+was released
+지금은 적용된 패치일것 [only for 3.x]
+
+
+Missing CPU power-saving states: apply this patch[3.x대 버전에만 적용되는 패치]
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4.14설치중 libelf-dev 설치(prepare-objtool fail : error: Cannot generate ORC metadata for CONFIG_UNWINDER_ORC=y, please install libelf-dev, libel-devel or elfutils-libelf-devel )
+4.19 설치중 make menuconfig 때 bison 패키지 없음 발견
+flex도 발견
+
